@@ -13,13 +13,19 @@
   <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Login" />
 
   <!-- Username Input -->
-  <Label text="Username" />
-  <TextField fx:id="userNameInput" promptText="Enter your username" style="-fx-padding:10px; " />
+  <Label text="Username" styleClass="label-input-size" />
+  <TextField fx:id="userNameInput" promptText="Enter your username" styleClass="input" style= "-fx-pref-width:300; " />
 
   <!-- Password Input -->
-  <Label text="Password"/>
-  <PasswordField fx:id="passwordInput" promptText="Enter your password" style="-fx-padding: 10px" />
+  <Label text="Password" styleClass="label-input-size"/>
+  <PasswordField fx:id="passwordInput" promptText="Enter your password" styleClass="input" style= "-fx-pref-width:300; " />
 
-
-  <Button  onAction="#onHandleLogin" prefHeight="39.0" prefWidth="154.0" styleClass="button " text="Login" />
+  <!-- Login Button -->
+  <HBox alignment="CENTER" spacing="10.0">
+    <Button onAction="#onHandleLogin" prefHeight="39.0" prefWidth="154.0" styleClass="button" text="Login" />
+  </HBox>
 </VBox>
+
+
+
+

@@ -31,7 +31,11 @@ public class LogoutController   {
 
     private void loadLoginScreen() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/loginscriptjfx/log-in-view.fxml"));
+
         Scene scene = new Scene(loader.load(), 400, 400);
+
+        // As the same in the Hello Application - must be linked to css file so the new scene is associated with the styling.
+        scene.getStylesheets().add(getClass().getResource("/com/example/loginscriptjfx/application.css").toExternalForm());
 
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.setScene(scene);

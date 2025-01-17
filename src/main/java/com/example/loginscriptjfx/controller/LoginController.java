@@ -1,5 +1,6 @@
 package com.example.loginscriptjfx.controller;
 
+import com.example.loginscriptjfx.model.UserLogic;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class LoginController {
+
     @FXML
     private TextField userNameInput;
 
@@ -21,25 +23,9 @@ public class LoginController {
     @FXML
     private PasswordField passwordInput;
 
-    // Array of users
-     ArrayList<User> users = new ArrayList<User>();
+    private UserLogic logic = new UserLogic();
 
-     // built in method to set up data after fxml UI is loaded. Will create a list of username and password after log-in-view is loaded
-     public void initialize() {
-         users.add(new User("JohnDoe", "Poodles123"));
-         users.add(new User("JaneDoe", "Oranges234"));
-         users.add(new User("JackSmith", "Pizza123"));
-     }
 
-    public boolean validateLogin(String inputUserName, String inputPassword) {
-         // loop over user arraylist
-        for(User user : users) {
-            if(user.getUsername().equals(inputUserName) && user.getPassword().equals(inputPassword)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void onHandleLogin() throws IOException {
         String inputUserName = userNameInput.getText().trim();
@@ -53,22 +39,28 @@ public class LoginController {
 
         boolean loggedIn = false;
 
-        if (validateLogin(inputUserName, inputPassword)) {
+        if (logic.validateLogin(inputUserName, inputPassword)) {
             loggedIn = true;
-           loadLoggedInPage();
+            loadLoggedInPage();
         } else {
             displayFailedLoginMessage();
         }
     }
 
+
+
+
     // Loading loggedin page
-    private void loadLoggedInPage() throws IOException {
+  public void loadLoggedInPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/loginscriptjfx/loggedin.fxml"));
         Scene scene = new Scene(loader.load(), 400, 400);
 
         // Create new scene to the loggedin view
         // Stage is a subclass of Window object so can cast back to Stage object to display new scene(loggedin.fxml)
         Stage stage = (Stage) userNameInput.getScene().getWindow();
+
+        // As the same in the Hello Application - must linked to css file so the new scene is associated with the styling.
+        scene.getStylesheets().add(getClass().getResource("/com/example/loginscriptjfx/application.css").toExternalForm());
 
         stage.setScene(scene);
         stage.setTitle("Logged In");
@@ -84,12 +76,12 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    // Error message when user click login with empty inputs
-    private void showErrorAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Login Failed");
-        alert.setHeaderText("Required");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+        // Error message when user click login with empty inputs
+        private void showErrorAlert(String message) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Login Failed");
+            alert.setHeaderText("Required");
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
 }

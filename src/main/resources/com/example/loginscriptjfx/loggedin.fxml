@@ -9,7 +9,7 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginscriptjfx.controller.LogoutController">
     <Label text="Logged In" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
     <Label text="Welcome to the application!" />
-    <Button fx:id="logoutButton" text="Logout" onAction="#onHandleLogout"/>
+    <Button fx:id="logoutButton" prefHeight="39.0" prefWidth="154.0" styleClass="button" text="Logout" onAction="#onHandleLogout"/>
 
 </VBox>
 
