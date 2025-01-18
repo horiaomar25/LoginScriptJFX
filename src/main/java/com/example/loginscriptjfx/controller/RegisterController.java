@@ -1,5 +1,4 @@
 package com.example.loginscriptjfx.controller;
-
 import com.example.loginscriptjfx.model.User;
 import com.example.loginscriptjfx.model.UserLogic;
 import javafx.fxml.FXML;
@@ -7,13 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-
 public class RegisterController {
-
-
 
     @FXML
     private TextField userNameCreation;
@@ -21,7 +14,7 @@ public class RegisterController {
     @FXML
     PasswordField passwordCreation;
 
-    private UserLogic logic = new UserLogic();
+    private UserLogic logic = new UserLogic(); // Access to methods in this class
 
 
     public void onHandleRegisterNewUser(){
